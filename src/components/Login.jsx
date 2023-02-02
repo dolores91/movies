@@ -4,6 +4,7 @@ import swal from '@sweetalert/with-react'
 import Listado from './Listado'
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import "../css/bootstrap.min.css"
 
 function Login() {
     const navigate = useNavigate();
@@ -48,14 +49,14 @@ axios.post("http://challenge-react.alkemy.org/",{email, password})
     return (
         <>
             <h2>Formulario de login</h2>
-            <form onSubmit={handleSubmit}>
-                <label> E-mail
-                    <input type="mail" name='email'></input>
+            <form className="mb-3" onSubmit={handleSubmit} >
+                <label className="form-label"> E-mail
+                    <input className="form-control" type="mail" name='email'></input>
                 </label>
-                <label>Contraseña
-                    <input type="password" name='password'></input>
+                <label className="form-label">Contraseña
+                    <input className="form-control" type="password" name='password'></input>
                 </label>
-                <button type='submit'>Ingresar</button>
+                <button className="btn btn-info" type='submit'>Ingresar</button>
             </form>
         </>
     )
