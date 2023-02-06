@@ -3,11 +3,13 @@ import "../css/bootstrap.min.css"
 
 const Footer = () => {
     return (
-    <nav className='d-flex p-2'>
-        <ul>
-            <li> <a href='http://www.instagram.com'  rel='noopener noreferer' >IG</a></li>
+    <nav >
+        <ul className='d-flex'>
+            <li className="list-group-item"> <a href='http://www.instagram.com'  rel='noopener noreferer' >IG</a></li>
+            <li className="list-group-item"> <a href='http://www.instagram.com'  rel='noopener noreferer' >IG</a></li>
+            <li className="list-group-item"> <a href='http://www.instagram.com'  rel='noopener noreferer' >Copyright Alkemy Challenge</a></li>
         </ul>
-        <p>Copyright Alkemy Challenge</p>
+       
     </nav>
     );
 }
