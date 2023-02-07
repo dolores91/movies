@@ -38,17 +38,17 @@ axios.post("http://challenge-react.alkemy.org/",{email, password})
     console.log(res.data);
     //guardamos el token localmente:
     const token = res.data.token;
-    localStorage.setItem("token", token);
+    sessionStorage.setItem("token", token);
     navigate("/listado")
     
 })
 }
-let token = localStorage.getItem("token")
+let token = sessionStorage.getItem("token")
 //EN este caso el renderizado condicional se hace xq no tiene sentido volver a loguearse cuando ya tiene token.
     return (
         <>
         {token && <Navigate replace to="/listado"/>}
-        <div className="p-3 mb-2 bg-warning-subtle text-emphasis-warning">
+        <div className="p-3 mb-2  " style={{ backgroundColor: "#589DBE" }}>
             <h2>Formulario de login</h2>
             <form className="mb-3" onSubmit={handleSubmit} >
                 <label className="form-label"> E-mail
