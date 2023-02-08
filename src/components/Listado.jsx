@@ -43,7 +43,7 @@ const Listado = () => {
                 post.map((oneMovie, i) => {
                     return (
 
-                        <div className='col-3' key={i} >
+                        <div className='col-3 mb-3' key={i} >
                             <div className='card'>
                                 <img src={`https://image.tmdb.org/t/p/w500/${oneMovie.poster_path}`} className="card-img-top" alt=".."></img>
                                 <div className="card-body">
