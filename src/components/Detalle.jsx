@@ -5,7 +5,6 @@ import axios from "axios";
 import swal from '@sweetalert/with-react'
 
 
-
 const Detalle = () => {
     let token = sessionStorage.getItem("token")
     console.log(token);
@@ -23,8 +22,8 @@ const Detalle = () => {
     useEffect(() => {
         axios.get(API).then((response) => {
             setPost(response.data);
-            console.log(MovieID);
-            console.log(response.data);
+           // console.log(MovieID);
+           // console.log(response.data);
         })
             .catch(error => {
                 swal(<h2>El llamado a la API tiene errorres, intenta más tarde</h2>)
@@ -32,42 +31,42 @@ const Detalle = () => {
     }, [MovieID]);
 
     if (!post) return null;
-    console.log(post);
+    //console.log(post);
 
     const genres = post.genres
 
 
     return (
         <div style={{ backgroundColor: "#589DBE" }}>
-        <div className='container-sm' >
+        <div className='container-sm mx-5' >
             {/*LOGIN ? ->*/}
             {!token && <Navigate replace to="/" />}
             {/*MOVIE existe ? -> */}
             {!post && <h2>Cargando contenido..</h2>}
             {post && (
                 <>
-                    <h2>                Detalle de la película            </h2>
+                    <h2 className='py-4'>                Detalle de la película:            </h2>
                     <div className='row'>
-                        <h5>Título: {post.original_title}</h5>
+                        <h5 className='py-1'>Título: {post.original_title}</h5>
                         <div className='col-4'><img src={`https://image.tmdb.org/t/p/w500/${post.poster_path}`} className="card-img-top" alt=".."></img></div>
                         <div className='col-8'>
 
 
-                            <h5>Géneros: </h5>
+                            <h5 className='py-1' >Géneros: </h5>
                             {
                                 genres.map((oneGenre, i) => {
                                     return (
                                         <div className='col-3' key={i} >
-                                            <li className="card-text">{oneGenre.name}</li>
+                                            <li className="card-text py-1">{oneGenre.name}</li>
                                         </div>
                                     )
                                 })
                             }
 
-                            <h5>Reseña: </h5>
-                            <p>{post.overview}</p>
-                            <h6>Presupuesto: ${post.budget}</h6>
-                            <h6>Lanzamiento: {post.release_date}</h6>
+                            <h5 className='py-1'>Reseña: </h5>
+                            <p className='py-1 text-wrap' style={{width: "25rem"}}>{post.overview}</p>
+                            <h6 className='py-1'>Presupuesto: ${post.budget}</h6>
+                            <h6 className='py-1'>Lanzamiento: {post.release_date}</h6>
 
 
                         </div>

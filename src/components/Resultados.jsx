@@ -18,7 +18,7 @@ const Resultados = () => {
     useEffect(() => {
         axios.get(API).then((response) => {
             setPost(response.data.results);
-            console.log(response.data.results);
+            //console.log(response.data.results);
             if (post.length===0) {
                 swal(<h2>Tu búsqueda no arrojó resultados</h2>)
                 navigate("/listado")
@@ -27,10 +27,10 @@ const Resultados = () => {
             .catch(error => {
                 swal(<h2>El llamado a la API tiene errorres, intenta más tarde</h2>)
             });
-    }, [post]);
+    }, [keyword]);
 
     if (!post) return null;
-    console.log(post);
+    //console.log(post);
 
     return (
         <div style={{ backgroundColor: "#589DBE" }}>

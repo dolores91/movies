@@ -35,8 +35,8 @@ swal(<h2>Ingreso correcto</h2>)
 //CONEXION CON AXIOS
 axios.post("http://challenge-react.alkemy.org/",{email, password})
 .then(res =>{
-    console.log(res.data);
-    //guardamos el token localmente:
+    //console.log(res.data);
+    //guardamos el token en la sesión:
     const token = res.data.token;
     sessionStorage.setItem("token", token);
     navigate("/listado")
@@ -46,20 +46,20 @@ axios.post("http://challenge-react.alkemy.org/",{email, password})
 let token = sessionStorage.getItem("token")
 //EN este caso el renderizado condicional se hace xq no tiene sentido volver a loguearse cuando ya tiene token.
     return (
-        <>
+        <div style={{ backgroundColor: "#589DBE" }} className='vh-100'>
         {token && <Navigate replace to="/listado"/>}
-        <div className="p-3 mb-2  " style={{ backgroundColor: "#589DBE" }}>
-            <h2>Formulario de login</h2>
-            <form className="mb-3" onSubmit={handleSubmit} >
-                <label className="form-label"> E-mail
-                    <input className="form-control" type="mail" name='email'></input>
+        <div className="p-5   " >
+            <h2 className='py-2'>Iniciar sesión</h2>
+            <form className="mb-1dit status " onSubmit={handleSubmit} >
+                <label className="form-label "> E-mail
+                    <input className="form-control " type="mail" name='email'></input>
                 </label>
-                <label className="form-label">Contraseña
+                <label className="form-label ms-3">Contraseña
                     <input className="form-control" type="password" name='password'></input>
                 </label>
-                <button className="btn btn-info" type='submit'>Ingresar</button>
+                <button className="btn btn-info ms-3" type='submit'>Ingresar</button>
             </form>
-        </div></>
+        </div></div>
     )
 }
 
