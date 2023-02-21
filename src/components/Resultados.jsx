@@ -3,7 +3,9 @@ import swal from '@sweetalert/with-react'
 import axios from "axios";
 import { useNavigate, Link, Navigate } from "react-router-dom";
 
-const Resultados = () => {
+const Resultados = (props) => {
+    let token = sessionStorage.getItem("token")
+
     const navigate = useNavigate();
     //IDENTIFICARKEYWORDENURL 
     let query = new URLSearchParams(window.location.search)
@@ -34,6 +36,7 @@ const Resultados = () => {
 
     return (
         <div style={{ backgroundColor: "#589DBE" }}>
+        {!token && <Navigate replace to="/" />}
          <div className='row mx-1'  >
             <h2 className='my-3'>Resultados de <em>{keyword}</em>:</h2>
             {
@@ -43,6 +46,9 @@ const Resultados = () => {
                             <div className='card'>
                                 <img src={`https://image.tmdb.org/t/p/w500/${oneFilm.backdrop_path}`} className="card-img-top" alt=".."></img>
                                 <div className="card-body">
+                                <button className='favorite-btn'
+                               onClick={props.isFav}
+                                data-movie-id={oneFilm.id}>🖤</button>
                                     <h5 className="card-title">{oneFilm.title.substring(0, 50)}</h5>
                                     <p className="card-text">{oneFilm.overview.substring(0, 70).concat("...")}</p>
                                     <Link to={`/detalle?MovieID=${oneFilm.id}`} className="btn btn-primary">Ver más</Link>
