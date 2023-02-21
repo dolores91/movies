@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import swal from '@sweetalert/with-react'
+import "../css/app.css"
 
-const Listado = () => {
+const Listado = (props) => {
+
    // const navigate = useNavigate();
     // SEGURIDADERUTAS FORMA 1 el use effect verifica, al montarse el componente, si el usuario está logueado, sino redirige automaticamente al login
     /*useEffect(() => {
@@ -26,7 +28,7 @@ const Listado = () => {
             setPost(response.data.results);
         })
             .catch(error => {
-                swal(<h2>El llamado a la API tiene errorres, intenta más tarde</h2>)
+               // swal(<h2>El llamado a la API tiene errorres, intenta más tarde</h2>)
             });
     }, [setPost]);
 
@@ -47,6 +49,9 @@ const Listado = () => {
                         <div className='col-3 mt-3' key={i} >
                             <div className='card'>
                                 <img src={`https://image.tmdb.org/t/p/w500/${oneMovie.backdrop_path}`} className="card-img-top" alt=".."></img>
+                                <button className='favorite-btn'
+                                onClick={props.isFav} 
+                                data-movie-id={oneMovie.id}>🖤</button>
                                 <div className="card-body">
                                     <h5 className="card-title">{oneMovie.title.substring(0, 50)}</h5>
                                     <p className="card-text">{oneMovie.overview.substring(0, 100).concat("...")}</p>
